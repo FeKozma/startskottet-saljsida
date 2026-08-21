@@ -11,6 +11,9 @@
   --green: #22c55e;
   --amber: #f59e0b;
   --slate: #64748b;
+  --sunset: #e0710c;
+  --sunset-dark: #b8460a;
+  --sunset-light: #fef1e2;
   --radius: 14px;
   --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px -16px rgba(15, 23, 42, 0.18);
 }
@@ -52,6 +55,19 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--border);
 }
 
+.site-header::before {
+  content: "";
+  display: block;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--teal) 0%,
+    var(--sunset) 33%,
+    var(--red) 66%,
+    var(--green) 100%
+  );
+}
+
 .header-inner {
   display: flex;
   align-items: center;
@@ -82,17 +98,37 @@ img { max-width: 100%; display: block; }
 .site-nav a:hover { color: var(--ink); }
 
 /* Hero */
-.hero { padding: 88px 0 56px; }
+.hero { padding: 0 0 56px; position: relative; }
 
-.hero-inner { max-width: 760px; }
+.hero-banner {
+  position: relative;
+  width: 100%;
+  line-height: 0;
+  overflow: hidden;
+}
+.hero-banner img {
+  display: block;
+  width: 100%;
+  height: clamp(90px, 18vw, 170px);
+  object-fit: cover;
+  object-position: right center;
+}
+.hero-banner::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, var(--bg) 100%);
+}
+
+.hero-inner { max-width: 760px; padding-top: 40px; }
 
 .eyebrow {
   display: inline-block;
   margin: 0 0 18px;
   padding: 5px 12px;
   border-radius: 999px;
-  background: #ecfdf5;
-  color: var(--teal-dark);
+  background: var(--sunset-light);
+  color: var(--sunset-dark);
   font-size: 12.5px;
   font-weight: 700;
   letter-spacing: 0.02em;
