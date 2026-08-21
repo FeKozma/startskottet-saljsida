@@ -235,19 +235,6 @@ h1 {
 .feature-slate .feature-callout { background: #f1f5f9; border: 1px solid #e2e8f0; }
 .feature-slate .feature-callout .ico { color: #334155; }
 
-.feature-note {
-  display: flex;
-  gap: 10px;
-  align-items: flex-start;
-  margin: 20px 0 0;
-  padding-left: 2px;
-  font-size: 13.5px;
-  line-height: 1.6;
-  color: var(--muted);
-  font-style: italic;
-}
-.feature-note .ico { width: 17px; height: 17px; opacity: 0.8; }
-
 /* Mock UI window */
 .mock-window {
   background: var(--card);
