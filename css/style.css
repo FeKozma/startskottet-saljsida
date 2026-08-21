@@ -19,6 +19,13 @@
 
 html { scroll-behavior: smooth; }
 
+html, body {
+  /* Safety net: nothing on the page should legitimately need horizontal
+     scroll. If something ever miscalculates its width again, clip instead
+     of letting the whole page grow wider than the screen. */
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -167,6 +174,12 @@ h1 {
   gap: 56px;
   align-items: center;
 }
+/* Grid items default to min-width: auto, i.e. the width of their widest
+   un-wrappable content (here: the nowrap tab bar in the mock window). That
+   silently forces every feature section to a ~450px minimum width and
+   overflows on any phone narrower than that. min-width: 0 opts back into
+   normal shrink-to-fit behaviour. */
+.feature-copy, .feature-visual { min-width: 0; }
 .feature-grid.reverse .feature-copy { order: 2; }
 .feature-grid.reverse .feature-visual { order: 1; }
 
@@ -262,9 +275,14 @@ h1 {
   font-size: 12px;
   color: var(--muted);
   border-bottom: 1px solid var(--border);
-  overflow: hidden;
+  overflow-x: auto;
   white-space: nowrap;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  -webkit-mask-image: linear-gradient(to right, black calc(100% - 20px), transparent);
+  mask-image: linear-gradient(to right, black calc(100% - 20px), transparent);
 }
+.mock-tabs::-webkit-scrollbar { display: none; }
 .mock-tabs span {
   padding-bottom: 10px;
   border-bottom: 2px solid transparent;
@@ -368,4 +386,10 @@ h1 {
   .site-nav { display: none; }
   .mock-cards { grid-template-columns: 1fr; }
   .mock-tabs { padding: 10px 12px 0; gap: 12px; }
+}
+
+@media (max-width: 420px) {
+  .wrap { padding: 0 16px; }
+  .mock-tabs { font-size: 11px; gap: 9px; }
+  .mock-body { padding: 16px; }
 }
