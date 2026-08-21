@@ -443,27 +443,17 @@ h1 {
   border: 1px solid var(--border); font-size: 13.5px; font-weight: 600; color: var(--ink);
 }
 
-/* Footer banner */
-.footer-banner {
-  position: relative;
-  width: 100%;
-  line-height: 0;
-  overflow: hidden;
+/* Footer runners */
+.footer-runners {
+  padding-top: 32px;
+  display: flex;
+  justify-content: flex-start;
 }
-.footer-banner img {
+.footer-runners img {
   display: block;
-  width: 100%;
-  height: clamp(90px, 16vw, 160px);
-  object-fit: cover;
-  object-position: right center;
-  transform: scaleX(-1);
-  box-shadow: 0 -16px 28px -14px rgba(184, 70, 10, 0.35);
-}
-.footer-banner::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, transparent 55%, var(--bg) 100%);
+  width: clamp(96px, 13vw, 168px);
+  height: auto;
+  filter: drop-shadow(0 12px 20px rgba(184, 70, 10, 0.3));
 }
 
 /* Footer */
